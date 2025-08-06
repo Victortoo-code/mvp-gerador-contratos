@@ -11,6 +11,9 @@ st.title("Gerador de Contratos - MVP")
 st.write("Preencha os dados abaixo para gerar o contrato em PDF com cláusulas e timbre pré-definidos.")
 
 # Formulário de entrada
+
+uploaded_modelo = st.file_uploader("📄 Envie o modelo do contrato (.docx)", type=["docx"])
+
 with st.form("formulario_contrato"):
     nome_contratante = st.text_input("Nome do contratante")
     cpf_contratante = st.text_input("CPF do contratante")
