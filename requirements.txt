@@ -1,4 +1,0 @@
-streamlit
-docxtpl
-python-docx
-docx2pdf; sys_platform == 'win32'
