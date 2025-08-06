@@ -4,6 +4,8 @@ from datetime import datetime
 import base64
 import os
 
+uploaded_modelo = st.file_uploader("📄 Envie o modelo do contrato (.docx)", type=["docx"])
+
 # Título
 st.title("Gerador de Contratos - MVP")
 st.write("Preencha os dados abaixo para gerar o contrato em PDF com cláusulas e timbre pré-definidos.")
@@ -21,7 +23,12 @@ with st.form("formulario_contrato"):
 # Processar
 if enviar:
     # Carregar modelo
-    modelo = DocxTemplate("contrato_modelo.docx")
+    if uploaded_modelo is None:
+    st.warning("Envie um modelo de contrato antes de gerar o documento.")
+    st.stop()
+else:
+    modelo = DocxTemplate(uploaded_modelo)
+
 
     # Contexto para preenchimento
     contexto = {
